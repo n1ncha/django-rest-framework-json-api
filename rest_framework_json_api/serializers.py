@@ -224,8 +224,6 @@ class PolymorphicModelSerializer(ModelSerializer):
             if not isinstance(self.instance, QuerySet):
                 serializer_class = self.get_polymorphic_serializer_for_instance(self.instance)
                 return serializer_class(self.instance, context=self.context).get_fields()
-            else:
-                raise Exception("Cannot get fields from a polymorphic serializer given a queryset")
         return super(PolymorphicModelSerializer, self).get_fields()
 
     @classmethod
